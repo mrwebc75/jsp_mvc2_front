@@ -32,8 +32,7 @@ public class BoardServiceImpl implements BoardService {
       list = new ArrayList<BoardDTO>();
 
       // 방법2
-      list = daoList.stream()
-          .map(vo -> modelMapper.map(vo, BoardDTO.class))
+      list = daoList.stream().map(vo -> modelMapper.map(vo, BoardDTO.class))
           .collect(Collectors.toList());
 
       // 방법1
@@ -62,11 +61,15 @@ public class BoardServiceImpl implements BoardService {
   public int save(BoardDTO dto) {
 
     // DTO를 VO로 변환하는 작업
-    BoardVO vo = new BoardVO();
-    vo.setUserid(dto.getUserid());
-    vo.setTitle(dto.getTitle());
-    vo.setContent(dto.getContent());
-    vo.setNickname(dto.getNickname());
+    // 방법2
+    BoardVO vo = modelMapper.map(dto, BoardVO.class);
+
+    // 방법1
+//    BoardVO vo = new BoardVO();
+//    vo.setUserid(dto.getUserid());
+//    vo.setTitle(dto.getTitle());
+//    vo.setContent(dto.getContent());
+//    vo.setNickname(dto.getNickname());
 
     return boardDao.save(vo);
   }
@@ -78,14 +81,19 @@ public class BoardServiceImpl implements BoardService {
 
     BoardVO vo = boardDao.getOne(seq);
 
-    BoardDTO dto = new BoardDTO();
-    dto.setCnt(vo.getCnt());
-    dto.setContent(vo.getContent());
-    dto.setNickname(vo.getNickname());
-    dto.setRegdate(vo.getRegdate());
-    dto.setSeq(vo.getSeq());
-    dto.setTitle(vo.getTitle());
-    dto.setUserid(vo.getUserid());
+    // VO를 DTO로 변환
+    // 방법2
+    BoardDTO dto = modelMapper.map(vo, BoardDTO.class);
+
+    // 방법1
+//    BoardDTO dto = new BoardDTO();
+//    dto.setCnt(vo.getCnt());
+//    dto.setContent(vo.getContent());
+//    dto.setNickname(vo.getNickname());
+//    dto.setRegdate(vo.getRegdate());
+//    dto.setSeq(vo.getSeq());
+//    dto.setTitle(vo.getTitle());
+//    dto.setUserid(vo.getUserid());
 
     return dto;
   }
@@ -101,13 +109,16 @@ public class BoardServiceImpl implements BoardService {
   public int update(BoardDTO dto) {
 
     // DTO를 VO로 변환하는 작업
-    BoardVO vo = new BoardVO();
+    // 방법2
+    BoardVO vo = modelMapper.map(dto, BoardVO.class);
 
-    vo.setSeq(dto.getSeq());
-    vo.setUserid(dto.getUserid());
-    vo.setTitle(dto.getTitle());
-    vo.setContent(dto.getContent());
-    vo.setNickname(dto.getNickname());
+    // 방법1
+//    BoardVO vo = new BoardVO();
+//    vo.setSeq(dto.getSeq());
+//    vo.setUserid(dto.getUserid());
+//    vo.setTitle(dto.getTitle());
+//    vo.setContent(dto.getContent());
+//    vo.setNickname(dto.getNickname());
 
     return boardDao.update(vo);
   }

@@ -3,9 +3,12 @@ package com.study.jsp.ctrl;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.study.jsp.ctrl.board.BoardEditCtrl;
 import com.study.jsp.ctrl.board.BoardListCtrl;
+import com.study.jsp.ctrl.board.BoardReadCtrl;
 import com.study.jsp.ctrl.board.BoardWriteCtrl;
 import com.study.jsp.ctrl.user.UserLoginCtrl;
+import com.study.jsp.ctrl.user.UserLogoutCtrl;
 
 public class HanderMapping {
 
@@ -18,8 +21,12 @@ public class HanderMapping {
 
     urlMap.put("/board/write.do", new BoardWriteCtrl());
     urlMap.put("/board/list.do", new BoardListCtrl());
+    urlMap.put("/board/read.do", new BoardReadCtrl());
+    urlMap.put("/board/edit.do", new BoardEditCtrl());
+    urlMap.put("/board/delete.do", new BoardDeleteCtrl());
 
     urlMap.put("/user/login.do", new UserLoginCtrl());
+    urlMap.put("/user/logout.do", new UserLogoutCtrl());
   }
 
   // 요청경로에 해당하는 서브컨트롤러 객체 리턴

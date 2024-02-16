@@ -14,7 +14,7 @@
 <body>
 	<div id="wrap">
 		<h1>상세 게시글</h1>
-		<form action="${contextPath}/editCtrl" method="post">
+		<form action="${contextPath}/board/edit.do" method="post">
 			<input type="hidden" name="seq" value="${dto.seq}">
 			<fieldset>
 				<legend>글내용</legend>
@@ -52,8 +52,8 @@
 		</form>
 		<p>
 			<a href="./write.jsp">글등록</a> <br>
-			<a href="${contextPath}/deleteCtrl?seq=${dto.seq}">글삭제</a> <br>
-			<a href="${contextPath}/listCtrl">글목록</a> <br>
+			<a href="${contextPath}/board/delete.do?seq=${dto.seq}">글삭제</a> <br>
+			<a href="${contextPath}/board/list.do">글목록</a> <br>
 		</p>
 	</div>
 </body>
